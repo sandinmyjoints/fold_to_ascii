@@ -3,7 +3,10 @@
 from __future__ import print_function
 from collections import defaultdict
 
-mapped_characters_ord = [
+# To see printed representation of character `k`:
+# print(unichr(k))
+#
+codepoint_to_replacement = [
     (0xC0, u'A'),
     (0xC1, u'A'),
     (0xC2, u'A'),
@@ -1248,14 +1251,10 @@ mapped_characters_ord = [
     (0xFF5E, u'~)')
 ]
 
-# mapped_characters = [(unichr(k), v) for (k, v) in mapping]
-
-# mapped_characters_ord = [(ord(k), v) for (k, v) in mapped_characters]
-
 def none_factory():
     return None
 
-default_translate_table = defaultdict(none_factory, mapped_characters_ord)
+default_translate_table = defaultdict(none_factory, codepoint_to_replacement)
 
 def fold(unicode_string, replacement=u''):
     """Fold unicode_string to ASCII.
@@ -1274,9 +1273,11 @@ provided.
         raise TypeError('cannot replace using bytestring')
 
     if replacement:
-        def replacer():
+        def replacement_factory():
             return replacement
-        translate_table = defaultdict(replacer, mapped_characters_ord)
+
+        translate_table = defaultdict(replacement_factory, \
+                                      codepoint_to_replacement)
     else:
         translate_table = default_translate_table
 
