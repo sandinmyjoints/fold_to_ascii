@@ -12,9 +12,27 @@ class BasicTestSuite(unittest.TestCase):
         with self.assertRaises(TypeError):
             fold_to_ascii.fold('á')
 
+    def test_bytestring_replacement_raises(self):
+        with self.assertRaises(TypeError):
+            fold_to_ascii.fold('á', 'X')
+
     def test_fold(self):
+        # Fold mapped characters.
         self.assertEqual(fold_to_ascii.fold(u'á'), u'a')
+
+        # Remove unmapped characters.
         self.assertEqual(fold_to_ascii.fold(u'£'), u'')
+
+        # Remove astral characters.
+        self.assertEqual(fold_to_ascii.fold(u'💩'), u'')
+
+    def test_fold_with_replacement(self):
+        self.assertEqual(fold_to_ascii.fold(u'á', u'X'), u'a')
+        self.assertEqual(fold_to_ascii.fold(u'£', u'X'), u'X')
+
+        # Remove astral characters, always. TODO: is this what fold-to-ascii
+        # does?
+        self.assertEqual(fold_to_ascii.fold(u'💩'), u'')
 
 
 if __name__ == '__main__':

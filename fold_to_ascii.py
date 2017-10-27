@@ -3,46 +3,38 @@
 from __future__ import print_function
 from collections import defaultdict
 
-# Mapped characters.
+mapped_characters = [
+    (u'á', u'a')
+]
 
-def return_none():
+mapped_characters_ord = [(ord(k), v) for (k, v) in mapped_characters]
+
+def none_factory():
     return None
 
-default_translate_table_ord = defaultdict(return_none, [
-  (ord(u'á'), u'a')
-])
-
-# default_translate_table = defaultdict(unicode, [
-#   (u'á', u'a')
-# ])
-
-# Unmapped characters should be replaced with empty string by default, or other
-# replacement if provided.
-
-# All astral plane characters are removed.
+default_translate_table = defaultdict(none_factory, mapped_characters_ord)
 
 def fold(unicode_string, replacement=u''):
-    """Fold unicode_string to ASCII."""
+    """Fold unicode_string to ASCII.
+
+Unmapped characters should be replaced with empty string by default, or other
+replacement if provided.
+
+All astral plane characters are removed.
+
+"""
 
     if type(unicode_string) != unicode:
         raise TypeError('cannot fold bytestring')
 
-    # if replacement:
-    #     def replacer():
-    #         return replacement
-    #     translate_table = defaultdict(replacer, [
-    #         (ord(u'á'), u'a')
-    #     ])
-    # else:
-    #     translate_table = default_translate_table_ord
-    translate_table = default_translate_table_ord
+    if type(replacement) != unicode:
+        raise TypeError('cannot replace using bytestring')
 
-    # TODO: This can possibly be done more efficiently using a translate table.
-    #
+    if replacement:
+        def replacer():
+            return replacement
+        translate_table = defaultdict(replacer, mapped_characters_ord)
+    else:
+        translate_table = default_translate_table
+
     return unicode_string.translate(translate_table)
-    # result = u''
-
-    # for c in unicode_string:
-    #     result += translate_table[c]
-
-    return result
