@@ -1,2 +1,11 @@
 # fold-to-ascii
-A Python port of the Apache Lucene ASCII Folding Filter that converts alphabetic, numeric, and symbolic Unicode characters which are not in the first 127 ASCII characters (the ‘Basic Latin’ Unicode block) into a ASCII equivalents, if they exist.
+
+A Python port of the Apache Lucene ASCII Folding Filter that converts
+alphabetic, numeric, and symbolic Unicode characters which are not in the first
+127 ASCII characters (the ‘Basic Latin’ Unicode block) into a ASCII equivalents,
+if they exist.
+
+## Differences with fold-to-ascii
+
+Removes astral characters, always, even when a replacement character is
+specified. (Python struggles with astral characters.)

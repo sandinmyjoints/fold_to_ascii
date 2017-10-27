@@ -30,8 +30,8 @@ class BasicTestSuite(unittest.TestCase):
         self.assertEqual(fold_to_ascii.fold(u'á', u'X'), u'a')
         self.assertEqual(fold_to_ascii.fold(u'£', u'X'), u'X')
 
-        # Remove astral characters, always. TODO: is this what fold-to-ascii
-        # does?
+        # Remove astral characters, always. This is not what fold-to-ascii
+        # does, but Python struggles with astral characters...
         self.assertEqual(fold_to_ascii.fold(u'💩'), u'')
 
 

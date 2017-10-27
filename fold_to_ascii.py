@@ -20,9 +20,9 @@ def fold(unicode_string, replacement=u''):
 Unmapped characters should be replaced with empty string by default, or other
 replacement if provided.
 
-All astral plane characters are removed.
-
-"""
+All astral plane characters are always removed, even if a replacement is
+provided.
+    """
 
     if type(unicode_string) != unicode:
         raise TypeError('cannot fold bytestring')
