@@ -13,7 +13,8 @@ class BasicTestSuite(unittest.TestCase):
             fold_to_ascii.fold('á')
 
     def test_fold(self):
-        self.assertEqual(fold_to_ascii.fold(u'á'), 'a')
+        self.assertEqual(fold_to_ascii.fold(u'á'), u'a')
+        self.assertEqual(fold_to_ascii.fold(u'£'), u'')
 
 
 if __name__ == '__main__':
