@@ -19,6 +19,9 @@ All astral plane characters are always removed, even if a replacement is
 provided.
     """
 
+    if unicode_string is None:
+        return u''
+
     if type(unicode_string) != unicode:
         raise TypeError('cannot fold bytestring')
 

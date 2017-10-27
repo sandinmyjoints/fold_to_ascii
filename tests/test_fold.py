@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 
 from .context import fold_to_ascii
-
 import unittest
 
 
 class BasicTestSuite(unittest.TestCase):
     """Basic test cases."""
+
+    def test_none(self):
+        self.assertEqual(fold_to_ascii.fold(None), "", "This is expected to return the empty string.")
 
     def test_bytestring_raises(self):
         with self.assertRaises(TypeError):
