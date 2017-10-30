@@ -29,6 +29,7 @@ class BasicTestSuite(unittest.TestCase):
         self.assertEqual(fold_to_ascii.fold(u'💩'), u'')
 
     def test_fold_with_replacement(self):
+        self.assertEqual(fold_to_ascii.fold(u'a', u'X'), u'a')
         self.assertEqual(fold_to_ascii.fold(u'á', u'X'), u'a')
         self.assertEqual(fold_to_ascii.fold(u'£', u'X'), u'X')
 
