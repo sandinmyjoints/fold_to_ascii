@@ -7,7 +7,7 @@ from . import mapping
 def none_factory():
     return None
 
-default_translate_table = defaultdict(none_factory, mapping.codepoint_to_replacement)
+default_translate_table = defaultdict(none_factory, mapping.translate_table)
 
 def fold(unicode_string, replacement=u''):
     """Fold unicode_string to ASCII.
@@ -33,7 +33,7 @@ provided.
             return replacement
 
         translate_table = defaultdict(replacement_factory, \
-                                      mapping.codepoint_to_replacement)
+                                      mapping.translate_table)
     else:
         translate_table = default_translate_table
 
