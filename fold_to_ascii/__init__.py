@@ -1,1 +1,1 @@
-from .core import fold
+from .core import fold  # noqa: F401
