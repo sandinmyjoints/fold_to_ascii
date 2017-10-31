@@ -18,5 +18,6 @@ setup(
     author_email='william@spanishdict.com',
     url='https://github.com/spanishdict/fold_to_ascii',
     license=license,
-    packages=find_packages(exclude=('tests'))
+    packages=find_packages(exclude=('tests')),
+    keywords="ascii unicode sanitize diacritics fold folding ligatures"
 )
