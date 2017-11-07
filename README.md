@@ -17,7 +17,6 @@ u'Astroturf pate'
 u'Astroturf? pate'
 ```
 
-```
 ## Differences from [JS fold-to-ascii](https://www.npmjs.com/package/fold-to-ascii)
 
 This library **always** removes astral characters, even when a replacement
