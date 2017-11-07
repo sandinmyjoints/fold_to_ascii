@@ -1,4 +1,4 @@
-# fold-to-ascii
+# fold_to_ascii
 
 A Python port of the [Apache Lucene ASCII Folding
 Filter](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/miscellaneous/ASCIIFoldingFilter.html)
