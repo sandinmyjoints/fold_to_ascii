@@ -6,6 +6,18 @@ that converts alphabetic, numeric, and symbolic Unicode characters which are not
 in the first 127 ASCII characters (the "Basic Latin" Unicode block) into ASCII
 equivalents, if they exist.
 
+## Usage
+
+``` python
+> from fold_to_ascii import fold
+> s = u'Astroturf® paté'
+> fold(s)
+u'Astroturf pate'
+> fold(s, u'?')
+u'Astroturf? pate'
+```
+
+```
 ## Differences from [JS fold-to-ascii](https://www.npmjs.com/package/fold-to-ascii)
 
 This library **always** removes astral characters, even when a replacement
