@@ -30,6 +30,13 @@ provided.
     if type(replacement) != unicode:
         raise TypeError('cannot replace using bytestring')
 
+    try:
+        # If string contains only ASCII characters, just return it.
+        unicode_string.decode('ascii')
+        return unicode_string
+    except (UnicodeDecodeError, UnicodeEncodeError) as ex:
+        pass
+
     if replacement:
         def replacement_factory():
             return replacement
