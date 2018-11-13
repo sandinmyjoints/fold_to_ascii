@@ -34,7 +34,7 @@ provided.
         # If string contains only ASCII characters, just return it.
         unicode_string.decode('ascii')
         return unicode_string
-    except (UnicodeDecodeError, UnicodeEncodeError) as ex:
+    except (UnicodeDecodeError, UnicodeEncodeError):
         pass
 
     if replacement:
