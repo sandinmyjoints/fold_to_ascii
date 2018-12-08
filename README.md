@@ -31,3 +31,12 @@ that makes some interesting choices about what to replace, for example, `£`
 (`POUND SIGN`) is replaced with the string `PS`. Also, they do not allow
 specifying a replacement character to use other than the empty string for
 unmapped characters.
+
+## Release
+
+Requires a pypi account.
+
+``` shell
+$ python setup.py sdist bdist_wheel
+$ twine upload dist/*
+```
