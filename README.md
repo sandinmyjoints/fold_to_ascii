@@ -54,6 +54,6 @@ Requires a [pypi](https://pypi.org/) account.
 1. Build and upload:
 
 ``` shell
-$ python setup.py sdist bdist_wheel
+$ rm dist/* && python setup.py sdist bdist_wheel
 $ twine upload dist/*
 ```
