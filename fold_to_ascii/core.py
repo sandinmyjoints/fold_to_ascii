@@ -25,7 +25,7 @@ provided.
         return ''
 
     try:
-        # If string contains only ASCII characters, just return it.
+        # If string contains only ASCII characters, return it.
         str.encode('ascii')
         return str
     except UnicodeEncodeError:
