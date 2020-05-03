@@ -32,9 +32,26 @@ that makes some interesting choices about what to replace, for example, `£`
 specifying a replacement character to use other than the empty string for
 unmapped characters.
 
+## Development environment
+
+``` shell
+$ virtualenv -p python3 ~/.local/venvs/fold_to_ascii
+$ source ~/.local/venvs/fold_to_ascii/bin/activate
+$ pip install -r requirements.txt
+```
+
+## Test
+
+``` shell
+$ make lint && make test
+```
+
 ## Release
 
-Requires a pypi account.
+Requires a [pypi](https://pypi.org/) account.
+
+1. Bump the version in setup.py.
+1. Build and upload:
 
 ``` shell
 $ python setup.py sdist bdist_wheel
